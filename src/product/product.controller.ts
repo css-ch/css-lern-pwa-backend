@@ -7,9 +7,15 @@ export class ProductController {
     constructor(private readonly productRepo: ProductRepository) {}
 
     @Get(':name')
-    async getPersonalDataByUID(@Param('name') name: string) {
+    async getProductDataByName(@Param('name') name: string) {
         return await this.productRepo.getProductDataByName(name);
     }
 
+    @Get(':type/:brand/:color')
+    async getProductDataByTypeBrandColor(@Param('type') type: string,
+                                @Param('brand') brand: string,
+                                @Param('color') color: string) {
+        return await this.productRepo.getProductDataByTypeBrandColor(type, brand, color);
+    }
 
 }
