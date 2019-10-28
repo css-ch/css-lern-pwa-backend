@@ -1,14 +1,15 @@
-import { EntityRepository } from 'typeorm';
+import {EntityRepository} from 'typeorm';
 import {PersonalDataEntity} from '../../entities/personal-data/personal-data.entity';
 import {PersonalData} from '../../types/personal-data.type';
 
 @EntityRepository(PersonalDataEntity)
 export class PersonalDataRepository {
 
-    constructor() {}
+    constructor() {
+    }
 
     async getPersonalDataByUID(uidToFind: string) {
-        const personalDataEntity = await PersonalDataEntity.findOne({ uid: uidToFind });
+        const personalDataEntity = await PersonalDataEntity.findOne({uid: uidToFind});
         return {
             id: personalDataEntity.id,
             fullname: personalDataEntity.fullname,
@@ -25,6 +26,7 @@ export class PersonalDataRepository {
         newPersonalData.address = personalData.address;
         newPersonalData.postcode = personalData.postcode;
         newPersonalData.city = personalData.city;
+        newPersonalData.uid = personalData.uid;
         await newPersonalData.save();
     }
 }
