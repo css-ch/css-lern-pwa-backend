@@ -29,4 +29,14 @@ export class PersonalDataRepository {
         newPersonalData.uid = personalData.uid;
         await newPersonalData.save();
     }
+
+    async changePersonalData(personalData: PersonalData) {
+        const personalDataEntity = await PersonalDataEntity.findOne({uid: personalData.uid});
+        personalDataEntity.fullname = personalData.fullname;
+        personalDataEntity.address = personalData.address;
+        personalDataEntity.postcode = personalData.postcode;
+        personalDataEntity.city = personalData.city;
+        personalDataEntity.uid = personalData.uid;
+        await personalDataEntity.save();
+    }
 }

@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Logger, Param, Post} from '@nestjs/common';
+import {Body, Controller, Get, Logger, Param, Post, Put} from '@nestjs/common';
 import {PersonalDataRepository} from '../persistence/personal-data/personal-data-repository.service';
 import {PersonalData} from '../types/personal-data.type';
 
@@ -18,8 +18,12 @@ export class PersonalDataController {
 
     @Post('create')
     async createPersonlData(@Body() personalData: PersonalData) {
-        this.logger.log(personalData);
         await this.personalDataRepo.createPersonalData(personalData);
+    }
+
+    @Put('change')
+    async changePersonalData(@Body() personalData: PersonalData) {
+        await this.personalDataRepo.changePersonalData(personalData);
     }
 
 }
