@@ -1,6 +1,6 @@
 import {Body, Controller, Get, Logger, Param, Post, Put} from '@nestjs/common';
-import {PersonalDataRepository} from '../persistence/personal-data/personal-data-repository.service';
-import {PersonalData} from '../types/personal-data.type';
+import {PersonalDataRepository} from '../../services/personal-data/personal-data-repository.service';
+import {PersonalData} from '../../core/types/personal-data.type';
 
 @Controller('personal-data')
 export class PersonalDataController {

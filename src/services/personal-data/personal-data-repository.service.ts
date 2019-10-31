@@ -1,6 +1,6 @@
 import {EntityRepository} from 'typeorm';
-import {PersonalDataEntity} from '../../entities/personal-data/personal-data.entity';
-import {PersonalData} from '../../types/personal-data.type';
+import {PersonalDataEntity} from '../../core/entities/personal-data/personal-data.entity';
+import {PersonalData} from '../../core/types/personal-data.type';
 
 @EntityRepository(PersonalDataEntity)
 export class PersonalDataRepository {
