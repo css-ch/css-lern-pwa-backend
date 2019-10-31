@@ -7,7 +7,6 @@ export class PersonalDataController {
 
     private readonly logger = new Logger(PersonalDataController.name);
 
-
     constructor(private readonly personalDataRepo: PersonalDataRepository) {
     }
 

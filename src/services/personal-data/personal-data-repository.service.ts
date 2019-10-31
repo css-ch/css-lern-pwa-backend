@@ -10,14 +10,18 @@ export class PersonalDataRepository {
 
     async getPersonalDataByUID(uidToFind: string) {
         const personalDataEntity = await PersonalDataEntity.findOne({uid: uidToFind});
-        return {
-            id: personalDataEntity.id,
-            fullname: personalDataEntity.fullname,
-            address: personalDataEntity.address,
-            postcode: personalDataEntity.postcode,
-            city: personalDataEntity.city,
-            uid: personalDataEntity.uid,
-        };
+        try {
+            return {
+                id: personalDataEntity.id,
+                fullname: personalDataEntity.fullname,
+                address: personalDataEntity.address,
+                postcode: personalDataEntity.postcode,
+                city: personalDataEntity.city,
+                uid: personalDataEntity.uid,
+            };
+        } catch (e) {
+            return {};
+        }
     }
 
     async createPersonalData(personalData: PersonalData) {

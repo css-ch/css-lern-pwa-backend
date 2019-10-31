@@ -16,7 +16,7 @@ import {ProductController} from './controllers/product/product.controller';
             username: 'root',
             password: 'root',
             database: 'pwa_bay_mysql',
-            entities: [__dirname + '/entities/**/*.entity{.ts,.js}'],
+            entities: [__dirname + '/core/entities/**/*.entity{.ts,.js}'],
             synchronize: true,
         }),
 
