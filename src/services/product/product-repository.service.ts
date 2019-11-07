@@ -1,5 +1,5 @@
-import { EntityRepository } from 'typeorm';
-import {ProductEntity} from '../../entities/product/product.entity';
+import {EntityRepository} from 'typeorm';
+import {ProductEntity} from '../../core/entities/product/product.entity';
 
 @EntityRepository(ProductEntity)
 export class ProductRepository {
@@ -7,7 +7,7 @@ export class ProductRepository {
     async getProductDataByName(nameToFind: string) {
         const productEntities = await ProductEntity
             .createQueryBuilder('product')
-            .where('product.name like :name', {name: '%' + nameToFind + '%' })
+            .where('product.name like :name', {name: '%' + nameToFind + '%'})
             .getMany();
         return {
             productEntities,

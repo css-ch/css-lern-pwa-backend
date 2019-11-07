@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from 'typeorm';
+import {BaseEntity, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity('product')
 export class ProductEntity extends BaseEntity {
@@ -14,7 +14,7 @@ export class ProductEntity extends BaseEntity {
     @Column({length: 20})
     color: string;
 
-    @Column({length: 150})
+    @Column({length: 500})
     image: string;
 
     @Column({length: 50})
