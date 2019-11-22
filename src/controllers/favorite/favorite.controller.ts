@@ -1,6 +1,5 @@
 import {Body, Controller, Get, Param, Post} from '@nestjs/common';
 import {FavoriteRepository} from '../../services/favorite/favorite-repository.service';
-import {PersonalData} from '../../core/types/personal-data.type';
 
 @Controller('favorite')
 export class FavoriteController {
@@ -8,14 +7,14 @@ export class FavoriteController {
     constructor(private readonly favoriteRepo: FavoriteRepository) {
     }
 
-    @Post('add-favorite')
+    @Post('mutate-favorite')
     async addProductToFavorites(@Body() data: any) {
-        await this.favoriteRepo.addProductToFavorites(data.user, data.product);
+        await this.favoriteRepo.addOrRemoveProductFavorites(data.user, data.product);
     }
 
-    @Get(':userid')
-    async getFavoritesForUser(@Param('userid') user: PersonalData) {
-        return await this.favoriteRepo.getFavoritesForUser(user);
+    @Get(':uid')
+    async getFavoritesForUser(@Param('uid') uid: string) {
+        return await this.favoriteRepo.getFavoritesFromUser(uid);
     }
 
 }
