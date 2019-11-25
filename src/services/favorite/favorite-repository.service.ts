@@ -9,14 +9,11 @@ export class FavoriteRepository {
     constructor() {
     }
 
-    async addOrRemoveProductFavorites(user, product) {
-        if (await this.checkIfAlreadyFavored(user.id, product.id)) {
-            await this.deleteFavorite(user.id, product.id);
+    async toggleFavorite(userid: number, productid: number) {
+        if (await this.checkIfAlreadyFavored(userid, productid)) {
+            await this.deleteFavorite(userid, productid);
         } else {
-            const newFavorite = new FavoriteEntity();
-            newFavorite.product = await ProductEntity.findOne({id: product.id});
-            newFavorite.user = await PersonalDataEntity.findOne({uid: user.uid});
-            await newFavorite.save();
+            await this.addFavorite(userid, productid);
         }
     }
 
@@ -26,13 +23,11 @@ export class FavoriteRepository {
             .where('favorite.user.id = :userid', {userid: userId})
             .andWhere('favorite.product.id = :productid', {productid: productId})
             .getCount();
-        if (favoriteEntityCount === 1) {
-            return true;
-        }
-        return false;
+
+        return favoriteEntityCount === 1;
     }
 
-    async getFavoritesFromUser(uidFromUser) {
+    async getFavoritesFromUser(uidFromUser: string) {
         const favorites = await FavoriteEntity
             .createQueryBuilder('favorite')
             .leftJoinAndSelect('favorite.user', 'user')
@@ -49,5 +44,12 @@ export class FavoriteRepository {
             .andWhere('favorite.product.id = :productid', {productid: productId})
             .getOne();
         await favoriteEntity.remove();
+    }
+
+    private async addFavorite(userid: number, productid: number) {
+        const newFavorite = new FavoriteEntity();
+        newFavorite.product = await ProductEntity.findOne({id: productid});
+        newFavorite.user = await PersonalDataEntity.findOne({id: userid});
+        await newFavorite.save();
     }
 }

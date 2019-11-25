@@ -4,6 +4,7 @@ import {PersonalDataEntity} from '../personal-data/personal-data.entity';
 
 @Entity('favorite')
 export class FavoriteEntity extends BaseEntity {
+
     @PrimaryGeneratedColumn()
     id: number;
 

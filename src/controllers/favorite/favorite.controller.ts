@@ -9,7 +9,7 @@ export class FavoriteController {
 
     @Post('mutate-favorite')
     async addProductToFavorites(@Body() data: any) {
-        await this.favoriteRepo.addOrRemoveProductFavorites(data.user, data.product);
+        await this.favoriteRepo.toggleFavorite(data.user, data.product);
     }
 
     @Get(':uid')
