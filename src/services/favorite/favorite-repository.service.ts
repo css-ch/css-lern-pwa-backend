@@ -8,9 +8,6 @@ import {PersonalData} from '../../core/types/personal-data.type';
 @EntityRepository(FavoriteEntity)
 export class FavoriteRepository {
 
-    constructor() {
-    }
-
     async addProductToFavorites(user, product) {
         const newFavorite = new FavoriteEntity();
         newFavorite.product = this.productToEntity(product);
