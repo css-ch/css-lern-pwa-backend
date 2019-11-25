@@ -6,6 +6,8 @@ import {TypeOrmModule} from '@nestjs/typeorm';
 import {PersonalDataRepository} from './services/personal-data/personal-data-repository.service';
 import {ProductRepository} from './services/product/product-repository.service';
 import {ProductController} from './controllers/product/product.controller';
+import {FavoriteRepository} from './services/favorite/favorite-repository.service';
+import {FavoriteController} from './controllers/favorite/favorite.controller';
 
 @Module({
     imports: [
@@ -21,11 +23,12 @@ import {ProductController} from './controllers/product/product.controller';
         }),
 
     ],
-    controllers: [AppController, PersonalDataController, ProductController],
+    controllers: [AppController, PersonalDataController, ProductController, FavoriteController],
     providers: [
         AppService,
         PersonalDataRepository,
         ProductRepository,
+        FavoriteRepository,
     ],
 })
 export class AppModule {
