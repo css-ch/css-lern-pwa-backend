@@ -1,4 +1,5 @@
-import {BaseEntity, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {FavoriteEntity} from '../favorite/favorite.entity';
 
 @Entity('product')
 export class ProductEntity extends BaseEntity {
@@ -22,4 +23,7 @@ export class ProductEntity extends BaseEntity {
 
     @Column({length: 50})
     type: string;
+
+    @OneToMany(type => FavoriteEntity, favorite => favorite.product)
+    favoredBy: FavoriteEntity[];
 }

@@ -15,6 +15,7 @@ export class PersonalDataRepository {
                 postcode: personalDataEntity.postcode,
                 city: personalDataEntity.city,
                 uid: personalDataEntity.uid,
+                favorites: personalDataEntity.favorites,
             };
         } catch (e) {
             return {};

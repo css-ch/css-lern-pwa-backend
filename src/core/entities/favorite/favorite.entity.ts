@@ -4,12 +4,13 @@ import {PersonalDataEntity} from '../personal-data/personal-data.entity';
 
 @Entity('favorite')
 export class FavoriteEntity extends BaseEntity {
+
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(type => PersonalDataEntity, user => user.id)
+    @ManyToOne(type => PersonalDataEntity, user => user.favorites)
     user: PersonalDataEntity;
 
-    @ManyToOne(type => ProductEntity, product => product.id)
+    @ManyToOne(type => ProductEntity, product => product.favoredBy)
     product: ProductEntity;
 }

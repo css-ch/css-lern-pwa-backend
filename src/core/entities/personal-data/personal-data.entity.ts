@@ -1,4 +1,5 @@
-import {BaseEntity, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {FavoriteEntity} from '../favorite/favorite.entity';
 
 @Entity('user')
 export class PersonalDataEntity extends BaseEntity {
@@ -19,4 +20,7 @@ export class PersonalDataEntity extends BaseEntity {
 
     @Column({length: 100})
     uid: string;
+
+    @OneToMany(type => FavoriteEntity, favorite => favorite.user)
+    favorites: FavoriteEntity[];
 }

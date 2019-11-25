@@ -1,3 +1,5 @@
+import {Favorite} from './favorite.type';
+
 export interface PersonalData {
     id: number;
     fullname: string;
@@ -5,4 +7,5 @@ export interface PersonalData {
     postcode: string;
     city: string;
     uid: string;
+    favorites: Favorite;
 }
