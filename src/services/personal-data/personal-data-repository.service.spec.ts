@@ -19,6 +19,7 @@ describe('PersonalDataController', () => {
                 postcode: '4246',
                 city: 'Some City',
                 uid: 'ValidUid',
+                favorites: [],
             };
             jest.spyOn(personalDataService, 'getPersonalDataByUID').mockImplementation(() => Promise.resolve(expected));
 

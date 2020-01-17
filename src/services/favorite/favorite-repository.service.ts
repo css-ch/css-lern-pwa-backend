@@ -6,9 +6,6 @@ import {PersonalDataEntity} from '../../core/entities/personal-data/personal-dat
 @EntityRepository(FavoriteEntity)
 export class FavoriteRepository {
 
-    constructor() {
-    }
-
     async toggleFavorite(userid: number, productid: number) {
         if (await this.checkIfAlreadyFavored(userid, productid)) {
             await this.deleteFavorite(userid, productid);

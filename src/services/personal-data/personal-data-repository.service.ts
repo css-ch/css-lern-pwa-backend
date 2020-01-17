@@ -5,9 +5,6 @@ import {PersonalData} from '../../core/types/personal-data.type';
 @EntityRepository(PersonalDataEntity)
 export class PersonalDataRepository {
 
-    constructor() {
-    }
-
     async getPersonalDataByUID(uidToFind: string) {
         const personalDataEntity = await PersonalDataEntity.findOne({uid: uidToFind});
         try {

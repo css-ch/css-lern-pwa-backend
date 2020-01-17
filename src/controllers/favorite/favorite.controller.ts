@@ -7,9 +7,9 @@ export class FavoriteController {
     constructor(private readonly favoriteRepo: FavoriteRepository) {
     }
 
-    @Post('mutate-favorite')
+    @Post('toggle-favorite')
     async addProductToFavorites(@Body() data: any) {
-        await this.favoriteRepo.toggleFavorite(data.user, data.product);
+        await this.favoriteRepo.toggleFavorite(data.user.id, data.product.id);
     }
 
     @Get(':uid')

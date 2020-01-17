@@ -5,8 +5,6 @@ import {PersonalData} from '../../core/types/personal-data.type';
 @Controller('personal-data')
 export class PersonalDataController {
 
-    private readonly logger = new Logger(PersonalDataController.name);
-
     constructor(private readonly personalDataRepo: PersonalDataRepository) {
     }
 

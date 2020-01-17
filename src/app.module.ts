@@ -14,10 +14,11 @@ import {FavoriteController} from './controllers/favorite/favorite.controller';
         TypeOrmModule.forRoot({
             type: 'mysql',
             host: 'localhost',
-            port: 3306,
+            port: 3307,
             username: 'root',
             password: 'root',
             database: 'pwa_bay_mysql',
+            keepConnectionAlive: true,
             entities: [__dirname + '/core/entities/**/*.entity{.ts,.js}'],
             synchronize: true,
         }),
