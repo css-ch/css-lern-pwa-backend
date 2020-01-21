@@ -8,6 +8,8 @@ import {ProductRepository} from './services/product/product-repository.service';
 import {ProductController} from './controllers/product/product.controller';
 import {FavoriteRepository} from './services/favorite/favorite-repository.service';
 import {FavoriteController} from './controllers/favorite/favorite.controller';
+import {ShoppingCartController} from './controllers/shopping-cart/shopping-cart.controller';
+import {ShoppingCartRepository} from './services/shopping-cart/shopping-cart-repository.service';
 
 @Module({
     imports: [
@@ -24,12 +26,13 @@ import {FavoriteController} from './controllers/favorite/favorite.controller';
         }),
 
     ],
-    controllers: [AppController, PersonalDataController, ProductController, FavoriteController],
+    controllers: [AppController, PersonalDataController, ProductController, FavoriteController, ShoppingCartController],
     providers: [
         AppService,
         PersonalDataRepository,
         ProductRepository,
         FavoriteRepository,
+        ShoppingCartRepository,
     ],
 })
 export class AppModule {
