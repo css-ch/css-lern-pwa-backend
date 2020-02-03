@@ -7,7 +7,7 @@ export class ShoppingCartController {
 
     @Get()
     getCart(@Req() req: Request, @Res() res: Response) {
-        if (req.session.cart === undefined) {
+        if (!req.session.cart) {
             req.session.cart = [] as Product[];
         }
 
@@ -16,8 +16,7 @@ export class ShoppingCartController {
 
     @Post('add')
     addToCart(@Req() req: Request, @Res() res: Response, @Body() product: Product) {
-        // tslint:disable
-        console.log(req.session.cart);
+
         if (req.session.cart === undefined) {
             req.session.cart = [] as Product[];
         }
@@ -26,12 +25,30 @@ export class ShoppingCartController {
             req.body as Product,
         ] as Product[];
 
-        // tslint:disable
-        console.log(req.session.cart);
+        res.sendStatus(200);
     }
 
     @Post('empty')
     emptyCart(@Req() req: Request, @Res() res: Response) {
         req.session.cart = [];
+        res.sendStatus(200);
+    }
+
+    @Post('remove')
+    removeItem(@Req() req: Request, @Res() res: Response, @Body() product) {
+        this.removeItemFromCart(product, req);
+
+        res.sendStatus(200);
+    }
+
+    private removeItemFromCart(product: Product, req: Request) {
+        let index = 0;
+        for (const productInCart of req.session.cart) {
+            if (productInCart.name === product.name) {
+                req.session.cart.splice(index, 1);
+                break;
+            }
+            index++;
+        }
     }
 }

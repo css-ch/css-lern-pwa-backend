@@ -25,4 +25,9 @@ export class ProductRepository {
             productEntities,
         };
     }
+
+    async getAllProducts() {
+        return await ProductEntity.query(`SELECT *
+                                          FROM product`);
+    }
 }

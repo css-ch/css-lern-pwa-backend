@@ -7,7 +7,7 @@ export class ProductController {
     constructor(private readonly productRepo: ProductRepository) {
     }
 
-    @Get(':name')
+    @Get('find/:name')
     async getProductDataByName(@Param('name') name: string) {
         return await this.productRepo.getProductDataByName(name);
     }
@@ -19,4 +19,8 @@ export class ProductController {
         return await this.productRepo.getProductDataByTypeBrandColor(type, brand, color);
     }
 
+    @Get('all')
+    async getProducts() {
+        return await this.productRepo.getAllProducts();
+    }
 }
