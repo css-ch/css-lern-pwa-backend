@@ -21,9 +21,9 @@ describe('AppController (e2e)', () => {
             .expect('Pong');
     });
 
-    it('/product/:name (GET)', () => {
+    it('/product/find/:name (GET)', () => {
         return request(app.getHttpServer())
-            .get('/product/kyrie')
+            .get('/product/find/kyrie')
             .expect(200)
             // tslint:disable-next-line:max-line-length
             .expect('{"productEntities":[{"id":1,"name":"Kyrie Flytrap II","price":76.95,"color":"Schwarz","image":"https://amp.sportscheck.com/i/sportscheck/D1000010011383255/nike-kyrie-flytrap-ii-basketballschuhe-herren-black-metallic-gold-anthracite?w=800&h=800&qlt=70&unsharp=(0,1,1,7)&fmt=webp","brand":"Nike","type":"Basketballschuhe"}]}');
@@ -46,7 +46,7 @@ describe('AppController (e2e)', () => {
 
     it('/favorite/:uid (GET)', () => {
         return request(app.getHttpServer())
-            .get('/favorite/mUX81CUYUIfHjuDrGlRLSLSESlr2')
+            .get('/favorite/mUX81CUYUIfHjuDrGlRLSLSESl2')
             .expect(200)
             .expect('[]');
     });

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker run --name pwabay -e MYSQL_ROOT_PASSWORD=root -e MYSQL_PASSWORD=root -e MYSQL_DATABASE=pwa_bay_mysql -e MYSQL_USER=root -d -p 3307:3306 mysql:5
+docker run --name pwabayy -e POSTGRES_PASSWORD=root -e POSTGRES_DB=pwa_bay_postgres -e POSTGRES_USER=root -d -p 5432:5432 postgres:11.5

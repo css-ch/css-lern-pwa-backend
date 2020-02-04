@@ -7,7 +7,7 @@ import expressSession = require('express-session');
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
     app.use(cors({
-        origin: 'http://localhost:4200',
+        origin: 'http://138.201.159.47',
         credentials: true,
     }));
     app.use(bodyParser.json());

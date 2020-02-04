@@ -14,12 +14,12 @@ import {ShoppingCartRepository} from './services/shopping-cart/shopping-cart-rep
 @Module({
     imports: [
         TypeOrmModule.forRoot({
-            type: 'mysql',
-            host: 'localhost',
-            port: 3307,
+            type: 'postgres',
+            host: 'postgres', // prod -> mysql | dev -> localhost
+            port: 5432,
             username: 'root',
             password: 'root',
-            database: 'pwa_bay_mysql',
+            database: 'pwa_bay_postgres',
             keepConnectionAlive: true,
             entities: [__dirname + '/core/entities/**/*.entity{.ts,.js}'],
             synchronize: true,
