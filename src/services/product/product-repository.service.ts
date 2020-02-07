@@ -30,4 +30,11 @@ export class ProductRepository {
         return await ProductEntity.query(`SELECT *
                                           FROM product`);
     }
+
+    async getRandomProduct() {
+        return await ProductEntity.query(`SELECT *
+                                          FROM product
+                                          ORDER BY random()
+                                          LIMIT 1`);
+    }
 }

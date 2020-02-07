@@ -23,4 +23,9 @@ export class ProductController {
     async getProducts() {
         return await this.productRepo.getAllProducts();
     }
+
+    @Get('random')
+    async getRandpomProduct() {
+        return await this.productRepo.getRandomProduct();
+    }
 }
