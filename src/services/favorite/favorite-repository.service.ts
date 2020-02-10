@@ -49,4 +49,15 @@ export class FavoriteRepository {
         newFavorite.user = await PersonalDataEntity.findOne({id: userid});
         await newFavorite.save();
     }
+
+    async getFavoriteCountForUser(uidFromUser: string) {
+        const favoriteCount = await FavoriteEntity
+            .createQueryBuilder('favorite')
+            .leftJoinAndSelect('favorite.user', 'user')
+            .where('user.uid = :uid', {uid: uidFromUser})
+            .leftJoinAndSelect('favorite.product', 'product')
+            .getCount();
+
+        return favoriteCount;
+    }
 }

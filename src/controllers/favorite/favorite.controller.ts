@@ -17,4 +17,9 @@ export class FavoriteController {
         return await this.favoriteRepo.getFavoritesFromUser(uid);
     }
 
+    @Get('favorite-count/:uid')
+    async getFavoriteCountForUser(@Param('uid') uid: string) {
+        return await this.favoriteRepo.getFavoriteCountForUser(uid);
+    }
+
 }
