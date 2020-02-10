@@ -32,9 +32,11 @@ export class ProductRepository {
     }
 
     async getRandomProduct() {
-        return await ProductEntity.query(`SELECT *
-                                          FROM product
-                                          ORDER BY random()
-                                          LIMIT 1`);
+        const product = await ProductEntity.query(`SELECT *
+                                                   FROM product
+                                                   ORDER BY random()
+                                                   LIMIT 1`);
+
+        return product[0];
     }
 }
