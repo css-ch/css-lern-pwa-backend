@@ -1,6 +1,8 @@
 import {EntityRepository} from 'typeorm';
 import {PersonalDataEntity} from '../../core/entities/personal-data/personal-data.entity';
 import {PersonalData} from '../../core/types/personal-data.type';
+// tslint:disable-next-line:no-var-requires
+const stripe = require('stripe')('sk_test_VeIBhAZZoWVXGxEffCVFupMW00KFLbNNGJ');
 
 @EntityRepository(PersonalDataEntity)
 export class PersonalDataRepository {

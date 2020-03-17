@@ -38,6 +38,7 @@
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.3.3",
+    "stripe": "^8.32.0",
     "typeorm": "^0.2.20"
   },
   "devDependencies": {
