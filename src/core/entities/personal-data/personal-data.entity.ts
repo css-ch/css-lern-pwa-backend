@@ -6,6 +6,9 @@ export class PersonalDataEntity extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @Column({length: 50, nullable: true})
+    stripeId: string;
+
     @Column({length: 70})
     fullname: string;
 
