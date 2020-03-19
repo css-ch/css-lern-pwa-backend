@@ -14,7 +14,7 @@ export class PaymentRepository {
             currency: 'chf',
         };
 
-        stripe.charges.create(params);
+        await stripe.charges.create(params);
     }
 
     async createCustomer(userData, userEmail) {
@@ -28,6 +28,12 @@ export class PaymentRepository {
             const personalDataEntity = await PersonalDataEntity.findOne({id: userData.id});
             personalDataEntity.stripeId = customer.id;
             personalDataEntity.save();
+        });
+    }
+
+    async getPayments(stripeCustomerId: string) {
+        return await stripe.charges.list({
+            customer: stripeCustomerId,
         });
     }
 }
