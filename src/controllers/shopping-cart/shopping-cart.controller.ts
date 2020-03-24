@@ -2,6 +2,9 @@ import {Body, Controller, Get, Post, Req, Res} from '@nestjs/common';
 import {Product} from '../../core/types/product.type';
 import {Request, Response} from 'express';
 
+/**
+ * Keep the ts-ignore until build fixed
+ */
 @Controller('shopping-cart')
 export class ShoppingCartController {
 
@@ -11,6 +14,7 @@ export class ShoppingCartController {
             req.session.cart = [] as Product[];
         }
 
+        // @ts-ignore
         res.json(req.session.cart);
     }
 
@@ -25,12 +29,14 @@ export class ShoppingCartController {
             req.body as Product,
         ] as Product[];
 
+        // @ts-ignore
         res.sendStatus(200);
     }
 
     @Post('empty')
     emptyCart(@Req() req: Request, @Res() res: Response) {
         req.session.cart = [];
+        // @ts-ignore
         res.sendStatus(200);
     }
 
@@ -38,6 +44,7 @@ export class ShoppingCartController {
     removeItem(@Req() req: Request, @Res() res: Response, @Body() product) {
         this.removeItemFromCart(product, req);
 
+        // @ts-ignore
         res.sendStatus(200);
     }
 
