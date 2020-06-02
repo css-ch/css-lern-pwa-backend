@@ -11,6 +11,7 @@ export class PersonalDataRepository {
             return {
                 id: personalDataEntity.id,
                 fullname: personalDataEntity.fullname,
+                stripeId: personalDataEntity.stripeId,
                 address: personalDataEntity.address,
                 postcode: personalDataEntity.postcode,
                 city: personalDataEntity.city,
