@@ -12,6 +12,11 @@ export class PaymentController {
         await this.paymentRepo.pay(amount, stripeCustomerId);
     }
 
+    @Post('create-refund/:paymentId')
+    async createRefund(@Param('paymentId') paymentId: string) {
+        await this.paymentRepo.refund(paymentId);
+    }
+
     @Post('create-customer')
     async createStripeCustomer(@Body() data: any) {
         await this.paymentRepo.createCustomer(data.user, data.email);

@@ -17,6 +17,14 @@ export class PaymentRepository {
         await stripe.charges.create(params);
     }
 
+    async refund(paymentId: string) {
+        const params: Stripe.RefundCreateParams = {
+            charge: paymentId,
+        };
+
+        await stripe.refunds.create(params);
+    }
+
     async createCustomer(userData, userEmail) {
         stripe.customers.create({
             email: userEmail,
