@@ -12,6 +12,8 @@ import {ShoppingCartController} from './controllers/shopping-cart/shopping-cart.
 import {ShoppingCartRepository} from './services/shopping-cart/shopping-cart-repository.service';
 import {PaymentController} from './controllers/payment/payment.controller';
 import {PaymentRepository} from './services/payment/payment-repository.service';
+import {PushController} from "./controllers/push/push.controller";
+import {PushRepository} from "./services/push/push-repository.service";
 
 @Module({
     imports: [
@@ -32,7 +34,7 @@ import {PaymentRepository} from './services/payment/payment-repository.service';
         }),
 
     ],
-    controllers: [AppController, PersonalDataController, ProductController, FavoriteController, ShoppingCartController, PaymentController],
+    controllers: [AppController, PersonalDataController, ProductController, FavoriteController, ShoppingCartController, PaymentController, PushController],
     providers: [
         AppService,
         PersonalDataRepository,
@@ -40,6 +42,7 @@ import {PaymentRepository} from './services/payment/payment-repository.service';
         FavoriteRepository,
         ShoppingCartRepository,
         PaymentRepository,
+        PushRepository
     ],
 })
 export class AppModule {

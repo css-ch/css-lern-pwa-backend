@@ -1,4 +1,4 @@
-import {Controller, Get, Param} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, Res} from '@nestjs/common';
 import {ProductRepository} from '../../services/product/product-repository.service';
 
 @Controller('product')
@@ -24,8 +24,18 @@ export class ProductController {
         return await this.productRepo.getAllProducts();
     }
 
+    @Get('all/names')
+    async getProductNames() {
+        return await this.productRepo.getProductNames();
+    }
+
     @Get('random')
     async getRandpomProduct() {
         return await this.productRepo.getRandomProduct();
+    }
+
+    @Post('change-price')
+    async changePrice(@Res() res, @Body() data: any) {
+        await this.productRepo.changePrice(data);
     }
 }
